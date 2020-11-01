@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Loading from 'react-loading-spinkit';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
 
 const API = 'https://us-central1-callert-b38f5.cloudfunctions.net/webApi/api/v1/users/';
 // TODO : id dynamique
@@ -12,14 +14,73 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
+      name: null,
+      firstName: null,
+      email: null,
+      contactNumber: null,
     };
+
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleContactNumberChange = this.handleContactNumberChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleNameChange(e) {
+    this.setState({ name: e.target.value })
+  }
+
+  handleFirstNameChange(e) {
+    this.setState({ firstName: e.target.value })
+  }
+
+  handleEmailChange(e) {
+    this.setState({ email: e.target.value })
+  }
+
+  handleContactNumberChange(e) {
+    this.setState({ contactNumber: e.target.value })
+  }
+
+  handleSubmit = (e) => {
+    console.log(e);
+    fetch(API + ID, {
+      method: 'PUT',
+      body: JSON.stringify(
+        this.state
+      ),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then(response => {
+      return response.json()
+    }).then(result => {
+      this.setState({
+        name: result.name,
+        firstName: result.firstName,
+        email: result.email,
+        contactNumber: result.contactNumber,
+      });
+    });
+    e.preventDefault();
   }
 
   componentDidMount() {
     fetch(API + ID)
-      .then(response => response.json())
-      .then(result => this.setState({ user: result.data }));
+      .then(function (response) {
+        console.log(response)
+        return response.json();
+      })
+      .then(result =>
+        //console.log(result.data.contactNumber)
+        this.setState({
+          name: result.data.name,
+          firstName: result.data.firstName,
+          email: result.data.email,
+          contactNumber: result.data.contactNumber,
+        })
+      );
   }
 
   render() {
@@ -34,29 +95,89 @@ class Profile extends Component {
       alignItems: "center",
     };
 
-    const loadingStyle = {
-      color: 'red',
-    }
-
-    const user = this.state.user;
-
-    if (user === null) {
+    if (this.state.name === null || this.state.firstName === null || this.state.email === null || this.state.contactNumber === null) {
+      console.log('loading...')
       return (
         <div style={{ height: '100vh', width: '100vw' }}>
-          <Loading show={true} name='circle' color='#F50357' />
+          <Loading
+            show={true}
+            name='circle'
+            color='#F50357'
+          />
         </div>
       );
     }
 
     return (
-      <div style={profileContainerStyle}>
-        <TextField style={tfStyle} variant="outlined" id="standard-full-width" color="secondary" label='Last Name' defaultValue={user.name} />
-        <TextField style={tfStyle} variant="outlined" id="standard-full-width" color="secondary" label='First Name' defaultValue={user.firstName} />
-        <TextField style={tfStyle} variant="outlined" id="standard-full-width" color="secondary" label='E-email' defaultValue={user.email} />
-        <TextField style={tfStyle} variant="outlined" id="standard-full-width" color="secondary" label='Adress' />
-        <TextField style={tfStyle} variant="outlined" id="standard-full-width" color="secondary" label='Zip Code' defaultValue={user.contactNumber} />
-        <Button style={{ marginTop: "20px" }} variant="contained" color="secondary">Save</Button>
-      </div>
+      <form style={profileContainerStyle} onSubmit={this.handleSubmit}>
+        <Avatar
+          style={{ backgroundColor: '#F50357' }}
+        >
+        </Avatar>
+        <Typography
+          component="h1"
+          variant="h5"
+        >
+          My profile
+          </Typography>
+        <TextField
+          style={tfStyle}
+          variant="outlined"
+          id="name" color="secondary"
+          label='Last Name'
+          defaultValue={this.state.name}
+          onChange={this.handleNameChange}
+        />
+        <TextField
+          style={tfStyle}
+          variant="outlined"
+          id="firstName"
+          color="secondary"
+          label='First Name'
+          defaultValue={this.state.firstName}
+          onChange={this.handleFirstNameChange}
+        />
+        <TextField
+          style={tfStyle}
+          variant="outlined"
+          id="email"
+          color="secondary"
+          label='Email Adress'
+          defaultValue={this.state.email}
+          onChange={this.handleEmailChange}
+        />
+        <TextField
+          style={tfStyle}
+          variant="outlined"
+          id="adress"
+          color="secondary"
+          label='Postal Adress'
+        />
+        <TextField
+          style={tfStyle}
+          variant="outlined"
+          id="zipCode"
+          color="secondary"
+          label='Zip Code'
+        />
+        <TextField
+          style={tfStyle}
+          variant="outlined"
+          id="contactNumber"
+          color="secondary"
+          label='Contact Phone Number'
+          defaultValue={this.state.contactNumber}
+          onChange={this.handleContactNumberChange}
+        />
+        <Button
+          type="submit"
+          style={{ marginTop: "20px" }}
+          variant="contained"
+          color="secondary"
+        >
+          Save
+          </Button>
+      </form>
     );
   }
 }
