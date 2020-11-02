@@ -18,6 +18,8 @@ class Profile extends Component {
       firstName: null,
       email: null,
       contactNumber: null,
+      adress: null,
+      zipCode: null,
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -43,8 +45,16 @@ class Profile extends Component {
     this.setState({ contactNumber: e.target.value })
   }
 
+  handleAdressChange(e) {
+    this.setState({ adress: e.target.value })
+  }
+
+  handleZipCodeChange(e) {
+    this.setState({ zipCode: e.target.value })
+  }
+
   handleSubmit = (e) => {
-    console.log(e);
+    //console.log(e);
     fetch(API + ID, {
       method: 'PUT',
       body: JSON.stringify(
@@ -61,6 +71,8 @@ class Profile extends Component {
         firstName: result.firstName,
         email: result.email,
         contactNumber: result.contactNumber,
+        adress: result.adress,
+        zipCode: result.zipCode,
       });
     });
     e.preventDefault();
@@ -79,6 +91,8 @@ class Profile extends Component {
           firstName: result.data.firstName,
           email: result.data.email,
           contactNumber: result.data.contactNumber,
+          adress: result.data.adress,
+          zipCode: result.data.zipCode,
         })
       );
   }
@@ -95,7 +109,8 @@ class Profile extends Component {
       alignItems: "center",
     };
 
-    if (this.state.name === null || this.state.firstName === null || this.state.email === null || this.state.contactNumber === null) {
+    if (this.state.name === null || this.state.firstName === null || this.state.email === null ||
+       this.state.contactNumber === null || this.state.adress === null || this.state.zipCode === null) {
       console.log('loading...')
       return (
         <div style={{ height: '100vh', width: '100vw' }}>
@@ -152,6 +167,8 @@ class Profile extends Component {
           id="adress"
           color="secondary"
           label='Postal Adress'
+          defaultValue={this.state.adress}
+          onChange={this.handleAdressChange}
         />
         <TextField
           style={tfStyle}
@@ -159,6 +176,8 @@ class Profile extends Component {
           id="zipCode"
           color="secondary"
           label='Zip Code'
+          defaultValue={this.state.zipCode}
+          onChange={this.handleZipCodeChange}
         />
         <TextField
           style={tfStyle}
