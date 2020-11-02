@@ -29,7 +29,9 @@ interface User {
     name: String,
     email: String,
     id:String,
-    contactNumber:String
+    contactNumber:String,
+    adress: String,
+    zipCode: String
 }
 
 // Create new user
