@@ -26,6 +26,8 @@ class Profile extends Component {
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleContactNumberChange = this.handleContactNumberChange.bind(this);
+    this.handleAdressChange = this.handleAdressChange.bind(this);
+    this.handleZipCodeChange = this.handleZipCodeChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
