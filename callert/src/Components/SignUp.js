@@ -12,7 +12,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {auth} from '../FirebaseConfig';
+import {auth, firestore} from '../FirebaseConfig';
 import { useHistory } from 'react-router-dom';
 
 
@@ -51,17 +51,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignUp() {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const history = useHistory();
-  const signInWithEmailAndPasswordHandler = 
+  const signUpWithEmailAndPasswordHandler = 
           (event,email, password) => {
               event.preventDefault();
-              auth.signInWithEmailAndPassword(email, password).then((result)=>{
-                if(result.user) history.push('/home');
+              auth.createUserWithEmailAndPassword(email, password).then((result)=>{
+                firestore.collection('userProfiles').doc(result.user.uid).set({
+                    id: result.user.uid,
+                    email : email
+                })
+                history.push('/')
               }).catch(error => {
                 setError("Error signing in with password and email!");
                 console.error("Error signing in with password and email", error);
@@ -87,7 +91,7 @@ export default function SignIn() {
         <Avatar className={classes.avatar}>
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Sign Up
         </Typography>
         {error !== null && <div>{error}</div>}
         <form className={classes.form} noValidate>
@@ -117,32 +121,18 @@ export default function SignIn() {
             onChange = {(event) => onChangeHandler(event)}
 
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}
+            onClick = {(event) => {signUpWithEmailAndPasswordHandler(event, email, password)}}
           >
-            Sign In
+            Sign Up
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
+          
         </form>
       </div>
       <Box mt={8}>

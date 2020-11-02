@@ -5,6 +5,7 @@ import SignIn from './Components/SignIn'
 import Profile from './Components/Profile'
 import Home from './Components/Home'
 import Blog from './Components/Blog'
+import SignUp from './Components/SignUp'
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
         <Route path="/profile" component={Profile} />
         <Route path="/home" component={Home} />
         <Route path="/blog" component={Blog} />
+        <Route path="/signUp" component={SignUp} />
+
       </Switch>
     </div>
   );
