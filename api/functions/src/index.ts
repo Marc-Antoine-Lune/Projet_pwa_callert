@@ -103,5 +103,64 @@ app.put('/users/:userId', async (req, res) => {
 });
 
 
+//get all articles
+app.get('/articles', async (req, res) => {
+    try {
+        const userQuerySnapshot = await db.collection('articles').get();
+        const articles: any[] = [];
+        userQuerySnapshot.forEach(
+            (doc)=>{
+                articles.push({
+                    id: doc.id,
+                    data:doc.data()
+            });
+            }
+        );
+        res.status(200).json(articles);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+//get all articles order by date
+app.get('/articlesByDate', async (req, res) => {
+    try {
+        const userQuerySnapshot = await db.collection('articles').orderBy('date').get();
+        const articles: any[] = [];
+        userQuerySnapshot.forEach(
+            (doc)=>{
+                articles.push({
+                    id: doc.id,
+                    data:doc.data()
+            });
+            }
+        );
+        res.status(200).json(articles);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+//get all articles order by view
+app.get('/articlesByView', async (req, res) => {
+    try {
+        const userQuerySnapshot = await db.collection('articles').orderBy('view').get();
+        const articles: any[] = [];
+        userQuerySnapshot.forEach(
+            (doc)=>{
+                articles.push({
+                    id: doc.id,
+                    data:doc.data()
+            });
+            }
+        );
+        res.status(200).json(articles);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+
+
 //define google cloud function name
 export const webApi = functions.https.onRequest(main);
