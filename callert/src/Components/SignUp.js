@@ -12,7 +12,8 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {auth, firestore} from '../FirebaseConfig';
+import auth from '../FirebaseConfig';
+import firestore from '../FirebaseConfig';
 import { useHistory } from 'react-router-dom';
 
 
