@@ -38,4 +38,4 @@ const  Article = ({name}) => {
        
     )
 }
-export default  Msg
+export default  Article
