@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 });
 
 
-Nafunction App(props) {
+function App(props) {
 
   const classes = useStyles();
   return (
