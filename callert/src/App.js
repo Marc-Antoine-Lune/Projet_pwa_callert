@@ -18,16 +18,17 @@ const useStyles = makeStyles({
 });
 
 
-function App() {
+Nafunction App(props) {
 
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <NavDrawer></NavDrawer>
+      <Route path="/" render={ ( props ) => ( props.location.pathname !== "/") && <NavDrawer/>}/>
+      
       <Switch>
+        <Route exact path="/" exact component={SignIn} />
         <Route exact from="/Home" render={props => <Home {...props} />} />
         <Route path="/Profile" render={props => <Profile {...props} />}  />
-        <Route path="/" exact component={SignIn} />
         <Route path="/blog" component={Blog} />
         <Route path="/signUp" component={SignUp} />
 
