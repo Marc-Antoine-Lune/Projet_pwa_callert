@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import CallIcon from '@material-ui/icons/Call';
 import Article from './Article'
+import MapL from './MapL'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -94,7 +95,7 @@ export default function Home() {
 </Grid>
 
 <Grid container spacing={3} className={classes.marg} >
-
+<MapL></MapL>
 </Grid>
 
     </div>
