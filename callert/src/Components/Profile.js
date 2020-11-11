@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from './NavBar'
 
 
 
@@ -6,7 +7,11 @@ import React from 'react';
 export default function Profile() {
 
   return (
-    <h1>Profile</h1>
+    <div class="container">
+      <h1>Profile</h1>
+      <NavBar></NavBar>
+    </div>
     
+
   );
   }

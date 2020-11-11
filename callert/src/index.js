@@ -2,8 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import './index.css';
 
-//!import * as serviceWorker from "./serviceWorker";
+
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render( 
     <BrowserRouter>
@@ -12,4 +14,11 @@ ReactDOM.render(
     document.getElementById("root")
 );
 
-//serviceWorker.unregister();
+	
+if(navigator.serviceWorker) {
+    console.log('sw')
+    navigator.serviceWorker
+        .register('./serviceWorker.js')
+        .catch(err => console.error('service worker NON enregistré', err));
+}
+
