@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import Loading from 'react-loading-spinkit';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import NavBar from './NavBar'
+import NavDrawer from './NavDrawer'
 
 const API = 'https://us-central1-callert-b38f5.cloudfunctions.net/webApi/api/v1/users/';
 // TODO : id dynamique
@@ -66,7 +68,7 @@ class Profile extends Component {
         "Content-type": "application/json; charset=UTF-8"
       }
     }).then(response => {
-      return response.json()
+       response.json()
     }).then(result => {
       this.setState({
         name: result.name,
@@ -81,13 +83,11 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch(API + ID)
-      .then(function (response) {
-        console.log(response)
-        return response.json();
-      })
-      .then(result =>
-        //console.log(result.data.contactNumber)
+    fetch("api/v1/users/" + ID)
+      .then( res => 
+        res.json()
+      ).then( (result) => {
+        console.log("test")
         this.setState({
           name: result.data.name,
           firstName: result.data.firstName,
@@ -96,7 +96,8 @@ class Profile extends Component {
           adress: result.data.adress,
           zipCode: result.data.zipCode,
         })
-      );
+      })
+      
   }
 
   render() {
@@ -109,6 +110,7 @@ class Profile extends Component {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      marginTop: 5,
     };
 
     if (this.state.name === null || this.state.firstName === null || this.state.email === null ||
@@ -126,6 +128,8 @@ class Profile extends Component {
     }
 
     return (
+      <div>
+      <NavDrawer/>
       <form style={profileContainerStyle} onSubmit={this.handleSubmit}>
         <Avatar
           style={{ backgroundColor: '#F50357' }}
@@ -199,6 +203,8 @@ class Profile extends Component {
           Save
           </Button>
       </form>
+      <NavBar/>
+      </div>
     );
   }
 }
