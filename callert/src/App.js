@@ -17,7 +17,6 @@ const useStyles = makeStyles({
 
 });
 
-
 function App(props) {
 
   const classes = useStyles();
@@ -27,12 +26,12 @@ function App(props) {
       
       <Switch>
         <Route exact path="/" exact component={SignIn} />
-        <Route exact from="/Home" render={props => <Home {...props} />} />
+        <Route exact from="/home" render={props => <Home {...props} />} />
         <Route path="/Profile" render={props => <Profile {...props} />}  />
         <Route path="/blog" component={Blog} />
         <Route path="/signUp" component={SignUp} />
-
       </Switch>
+
     </div>
   );
 }

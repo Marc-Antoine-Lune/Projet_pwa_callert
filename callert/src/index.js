@@ -5,6 +5,7 @@ import App from "./App";
 
 //!import * as serviceWorker from "./serviceWorker";
 
+import swDev from  './swDev'
 ReactDOM.render( 
     <BrowserRouter>
         <App/>
@@ -13,3 +14,5 @@ ReactDOM.render(
 );
 
 //serviceWorker.unregister();
+
+swDev();

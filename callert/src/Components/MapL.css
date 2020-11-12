@@ -1,4 +1,4 @@
-.map {
+#map-id {
     height:500px;
     width: 100%;
     background-color: white;
@@ -9,7 +9,7 @@
     box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
   }
 
-.map .leaflet-container{
+#map-id .leaflet-container{
   height: 100%;
   
 }
