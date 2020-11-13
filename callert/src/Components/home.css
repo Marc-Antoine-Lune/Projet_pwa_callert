@@ -7,3 +7,12 @@
     background-color: red;
 }
 
+h2, h3, p {
+    color: #3f51b5;
+}
+
+.btnLabel {
+    color: white;
+}
+
+

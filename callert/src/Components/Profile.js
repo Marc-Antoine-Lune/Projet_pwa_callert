@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Loading from 'react-loading-spinkit';
-import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import NavBar from './NavBar'
 import NavDrawer from './NavDrawer'
@@ -113,6 +112,11 @@ class Profile extends Component {
       marginTop: 5,
     };
 
+    const divContainerStyle = {
+      marginTop: 10,
+      marginBottom: 20
+    };
+
     if (this.state.name === null || this.state.firstName === null || this.state.email === null ||
        this.state.contactNumber === null || this.state.adress === null || this.state.zipCode === null) {
       console.log('loading...')
@@ -128,16 +132,13 @@ class Profile extends Component {
     }
 
     return (
-      <div>
+      <div style={divContainerStyle}>
       <NavDrawer/>
       <form style={profileContainerStyle} onSubmit={this.handleSubmit}>
-        <Avatar
-          style={{ backgroundColor: '#F50357' }}
-        >
-        </Avatar>
         <Typography
           component="h1"
           variant="h5"
+          color="primary"
         >
           My profile
           </Typography>

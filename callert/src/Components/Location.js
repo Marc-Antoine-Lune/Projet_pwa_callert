@@ -85,7 +85,7 @@ export default function SimpleModal() {
     <div style={{cursor: 'pointer'}}>
         <Button onClick={handleOpen} style={{border: "none", backgroundColor:"transparent"}}>
             <h3>Get your position</h3>
-            <MyLocationIcon style={{fontSize: 55}}/>
+            <MyLocationIcon style={{fontSize: 55, color: '#3f51b5'}}/>
         </Button>
 
       <Modal

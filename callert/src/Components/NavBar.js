@@ -22,7 +22,7 @@ const useStyles = makeStyles({
       color: 'rgba(255, 255, 255, 0.5)'
   },
   tabBackground: {  
-      backgroundColor: 'red',
+      backgroundColor: '#F50357',
       position: 'fixed',
       bottom: 0,
       width: '105%'

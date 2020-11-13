@@ -1,9 +1,0 @@
-.redButton{
-    box-shadow: -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset 5px 5px 5px #f38383;
-}
-
-.redButton:hover {
-    text-decoration: none;
-    background-color: red;
-}
-
