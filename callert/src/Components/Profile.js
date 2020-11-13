@@ -86,7 +86,6 @@ class Profile extends Component {
       .then( res => 
         res.json()
       ).then( (result) => {
-        console.log("test")
         this.setState({
           name: result.data.name,
           firstName: result.data.firstName,
@@ -96,7 +95,6 @@ class Profile extends Component {
           zipCode: result.data.zipCode,
         })
       })
-      
   }
 
   render() {
@@ -114,7 +112,7 @@ class Profile extends Component {
 
     const divContainerStyle = {
       marginTop: 10,
-      marginBottom: 20
+      marginBottom: 32
     };
 
     if (this.state.name === null || this.state.firstName === null || this.state.email === null ||
