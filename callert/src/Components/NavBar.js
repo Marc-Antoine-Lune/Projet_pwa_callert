@@ -7,12 +7,14 @@ import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import { Link } from 'react-router-dom';
+import MapIcon from '@material-ui/icons/Map';
 
 
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    marginLeft: -8
+    marginLeft: -8,
+    
   },
   indicator : {
     color : 'white'
@@ -21,10 +23,10 @@ const useStyles = makeStyles({
       color: 'rgba(255, 255, 255, 0.5)'
   },
   tabBackground: {  
-      backgroundColor: '#FF8686',
+      backgroundColor: '#F50357',
       position: 'fixed',
       bottom: 0,
-      width: '100%'
+      width: '105%'
 
   }
 });
@@ -47,7 +49,9 @@ export default function CenteredTabs() {
       >
         <Tab className={classes.indicator} component={Link} to="/home"  label="Home" icon={<HomeIcon/>} />
         <Tab className={classes.indicator} component={Link} to="/profile"  label="Profile" icon={<PersonIcon/>}  />
-        <Tab className={classes.indicator}  label="Help" icon={<LocalHospitalIcon/>}  />
+        <Tab className={classes.indicator} component={Link} to="/blog" label="Help" icon={<LocalHospitalIcon/>}  />
+        <Tab className={classes.indicator}  component={Link} to="/map" label="Map" icon={<MapIcon/>}  />
+
       </Tabs>
     </Paper>
   );

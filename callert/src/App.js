@@ -6,6 +6,7 @@ import Profile from './Components/Profile'
 import Home from './Components/Home'
 import Blog from './Components/Blog'
 import SignUp from './Components/SignUp'
+import MapPage from './Components/MapPage'
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/blog" component={Blog} />
         <Route path="/signUp" component={SignUp} />
+        <Route path="/map" component={MapPage} />
+
+        
 
       </Switch>
     </div>

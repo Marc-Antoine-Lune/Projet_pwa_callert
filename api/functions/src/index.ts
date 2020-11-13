@@ -3,6 +3,8 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import * as express from 'express';
 import * as bodyParser from "body-parser";
+import * as cors from "cors";
+
 
 //initialize firebase inorder to access its services
 admin.initializeApp(functions.config().firebase);
@@ -12,6 +14,9 @@ admin.initializeApp(functions.config().firebase);
 //initialize express server
 const app = express();
 const main = express();
+
+app.use(cors({ origin: true }));
+
 
 //add the path to receive request and set json as bodyParser to process the body 
 main.use('/api/v1', app);
@@ -42,7 +47,9 @@ app.post('/users', async (req, res) => {
             name: req.body['name'],
             email: req.body['email'],
             id:req.body['id'],
-            contactNumber:req.body['contactNumber']
+            contactNumber:req.body['contactNumber'],
+            adress: req.body['adress'],
+            zipCode: req.body['zipCode']
         }
 
         const newDoc = await db.collection('userProfiles').add(user);

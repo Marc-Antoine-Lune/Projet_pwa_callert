@@ -71,7 +71,7 @@ export default function SignUp() {
                 console.error("Error signing in with password and email", error);
               });
               
-  };
+  } ;
 
   
   const onChangeHandler = (event) => {
