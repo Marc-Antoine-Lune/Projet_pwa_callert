@@ -33,34 +33,17 @@ this.addEventListener('activate', (evt) => {
 	
 this.addEventListener('fetch', (evt) => {
 
+ 
 
-  console.log('url interceptée', evt.request.url);
-
-
-  // Strategy: cache only with network callback
-  evt.respondWith(
-  
-      caches.match(evt.request)
-          .then(cachedResponse => {   
-              if (cachedResponse) {
-                  console.log("url depuis le cache", evt.request.url);
-                  return cachedResponse;
-              }
-
-              // cache Strategy
-              return fetch(evt.request).then(
-                  function(newResponse) {
-                      console.log("url depuis le réseau et mise en cache", evt.request.url);
-                      
-                      caches.open(cacheName).then(
-                          function(cache){
-                              cache.put(evt.request, newResponse);
-                          }
-                      );
-                      return newResponse.clone();
-                  }
-              )
-          }
-      )
-  );
-});
+    evt.respondWith(
+        fetch(evt.request).then(res => {
+            console.log("url récupérée depuis le réseau", evt.request.url);
+            caches.open(cacheName).then(cache => cache.put(evt.request, res));
+            return res.clone();
+        })
+        .catch(err => {
+            console.log("url récupérée depuis le cache", evt.request.url);
+            return caches.match(evt.request);
+        })
+    );
+})

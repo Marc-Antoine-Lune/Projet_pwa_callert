@@ -51,7 +51,7 @@ class Article extends Component {
       <div>
         <NavDrawer/>
         <h2>{this.state.article.title}</h2>
-        <p>{this.state.article.text}</p>
+        <p dangerouslySetInnerHTML={{ __html: this.state.article.text }} style={{width: '80%', marginRight: 'auto', marginLeft: 'auto'}} />  
         <NavBar/>
       </div>
     );

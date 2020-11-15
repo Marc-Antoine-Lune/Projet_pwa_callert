@@ -120,7 +120,7 @@ const NavDrawer = props =>{
 
               </IconButton>
             </Grid>
-            <Typography variant="h6" noWrap>
+            <Typography variant="h6" noWrap style={{position: "relative", top: "-5px" }}>
             {firstName}
           </Typography>
 

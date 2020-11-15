@@ -129,7 +129,7 @@ class Profile extends Component {
         <TextField
           style={tfStyle}
           variant="outlined"
-          id="name" color="secondary"
+          id="name" color="primary"
           label='Last Name'
           defaultValue={this.state.name}
           onChange={this.handleNameChange}
@@ -138,7 +138,7 @@ class Profile extends Component {
           style={tfStyle}
           variant="outlined"
           id="firstName"
-          color="secondary"
+          color="primary"
           label='First Name'
           defaultValue={this.state.firstName}
           onChange={this.handleFirstNameChange}
@@ -147,7 +147,7 @@ class Profile extends Component {
           style={tfStyle}
           variant="outlined"
           id="email"
-          color="secondary"
+          color="primary"
           label='Email Adress'
           defaultValue={this.state.email}
           onChange={this.handleEmailChange}
@@ -156,7 +156,7 @@ class Profile extends Component {
           style={tfStyle}
           variant="outlined"
           id="adress"
-          color="secondary"
+          color="primary"
           label='Postal Adress'
           defaultValue={this.state.adress}
           onChange={this.handleAdressChange}
@@ -165,7 +165,7 @@ class Profile extends Component {
           style={tfStyle}
           variant="outlined"
           id="zipCode"
-          color="secondary"
+          color="primary"
           label='Zip Code'
           defaultValue={this.state.zipCode}
           onChange={this.handleZipCodeChange}
@@ -174,7 +174,7 @@ class Profile extends Component {
           style={tfStyle}
           variant="outlined"
           id="contactNumber"
-          color="secondary"
+          color="primary"
           label='Contact Phone Number'
           defaultValue={this.state.contactNumber}
           onChange={this.handleContactNumberChange}
@@ -183,7 +183,7 @@ class Profile extends Component {
           type="submit"
           style={{ marginTop: "20px" }}
           variant="contained"
-          color="secondary"
+          color="primary"
         >
           Save
           </Button>

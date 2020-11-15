@@ -65,7 +65,7 @@ class Blog extends Component {
 
     const liStyle = {
       listStyle: "none",
-      width: "200px",
+      width: "300px",
       marginBottom: "10px",
       marginLeft: "auto",
       marginRight: "auto",
@@ -94,7 +94,7 @@ class Blog extends Component {
       <div style={divContainerStyle}>
         
         
-        <ul style={{display: "flex", flexDirection: "column", justifyContent:"space-between", marginLeft: "-20px"}}>
+        <ul style={{display: "flex", flexDirection: "column", justifyContent:"space-between", marginLeft: "-40px"}}>
           {this.state.articles.map(article =>
           <li style={liStyle} >
             <Card variant="outlined" style={{borderRadius: "10px", backgroundColor: "#3f51b5"}} onClick={() => this.toArticle(article.id)}>

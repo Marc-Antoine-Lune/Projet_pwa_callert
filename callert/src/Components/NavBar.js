@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
@@ -32,13 +32,23 @@ const useStyles = makeStyles({
   }
 });
 
+
 export default function CenteredTabs() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(()=>{
+    const path = window.location.pathname;
+    if(path=="/home") setValue(0);
+    if(path=="/profile") setValue(1);
+    if(path=="/blog") setValue(2);
+    if(path=="/map") setValue(3);
+    if(path=="/article") setValue(2);
+  })
 
   return (
     <Paper className={classes.root}>
