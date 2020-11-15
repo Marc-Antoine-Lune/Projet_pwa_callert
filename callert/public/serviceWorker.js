@@ -15,6 +15,7 @@ this.addEventListener('install', (evt) => {
         '/static/js/main.chunk.js',
         '/static/js/0.chunk.js',
         '/static/js/bundle.js',
+        'navDrawer.js'
 
 
     ])

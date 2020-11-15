@@ -3,14 +3,13 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Loading from 'react-loading-spinkit';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 import NavBar from './NavBar'
 import NavDrawer from './NavDrawer'
+import firebase from 'firebase';
+
 
 const API = 'https://us-central1-callert-b38f5.cloudfunctions.net/webApi/api/v1/users/';
 // TODO : id dynamique
-const ID = '2';
 
 class Profile extends Component {
   constructor(props) {
@@ -22,6 +21,7 @@ class Profile extends Component {
       contactNumber: null,
       adress: null,
       zipCode: null,
+      id: null
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -58,8 +58,7 @@ class Profile extends Component {
   }
 
   handleSubmit = (e) => {
-    //console.log(e);
-    fetch(API + ID, {
+    fetch(API + this.state.id, {
       method: 'PUT',
       body: JSON.stringify(
         this.state
@@ -83,11 +82,11 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch(API + ID)
+    this.state.id = firebase.auth().currentUser.uid;
+    fetch(API + this.state.id)
       .then( res => 
         res.json()
       ).then( (result) => {
-        //console.log("test")
         this.setState({
           name: result.data.name,
           firstName: result.data.firstName,
@@ -97,7 +96,6 @@ class Profile extends Component {
           zipCode: result.data.zipCode,
         })
       })
-      
   }
 
   render() {

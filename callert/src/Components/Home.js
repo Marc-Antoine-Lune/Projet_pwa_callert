@@ -76,7 +76,12 @@ export default function Home() {
         timerInterval = setInterval(() => {
           timer = timer + 60;
           document.querySelector('#item').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px #f38383"
-          if(timer>170) window.alert("calling")
+          if(timer>170){
+            timer = 0;
+            window.alert("you're calling 112")
+            document.querySelector('#item').style.backgroundColor = "rgb(63, 81, 181)"
+
+          } 
         }, 1000);
     }, false);
 
@@ -131,7 +136,12 @@ export default function Home() {
     timerInterval = setInterval(() => {
       timer = timer + 60;
       document.querySelector('#pompier').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px #f38383"
-      if(timer>170) window.alert("calling")
+      if(timer>170){
+        window.alert("youre're calling 18")
+        timer = 0;
+        document.querySelector('#item').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset 5px 5px 5px #f38383"
+
+      } 
     }, 1000);
 }, false);
 
@@ -153,6 +163,7 @@ pompier.addEventListener("mouseup", (e) => {
           timer = timer + 60;
           document.querySelector('#pompier').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px red"
           if(timer>170){
+            timer = 0;
             window.alert("calling");
             clearInterval(timerInterval);
             document.querySelector('#pompier').style.boxShadow = "none";
@@ -177,7 +188,7 @@ pompier.addEventListener("mouseup", (e) => {
               timer = timer + 60;
               clearInterval(timerInterval);
               document.querySelector('#pompier').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px #f38383"
-              if(timer>170) window.alert("calling")
+              if(timer>170) window.alert("you're calling 18")
             }, 1000);
         }, false);
         
@@ -191,25 +202,26 @@ pompier.addEventListener("mouseup", (e) => {
       </div>
       <div style={{lineHeight: 'initial'}}>
         <h2>In case of emergency</h2>
-        <p>Choose a service to call</p>
+        <p>Choose a service to call and hold the button</p>
       </div>
       <div class="cards" className={classes.cards}>
           <Card className={classes.card} style={{backgroundColor: '#3f51b5'}} >
             <Button id="pompier" style={{height: '100%'}}>
-              <WhatshotIcon style={{color: 'white'}}/>
-              <p style={{color: 'white'}} >Pompier</p>
+              <WhatshotIcon style={{color: 'white', position: 'relative', top: "-23px"}}/>
+              <p style={{color: 'white', position: "relative", right:"25px"}} >Fireman</p>
             </Button>
           </Card>
           <Card className={classes.card} style={{backgroundColor: '#3f51b5'}} >
           <Button id="ambulance" style={{height: '100%'}}>
-              <AmbulanceIcon style={{color: 'white'}}/>
-              <p style={{color: 'white'}}> Samu</p>
+              <AmbulanceIcon style={{color: 'white', position: 'relative', top: "-23px"}}/>
+              <p style={{color: 'white', position: "relative", right:"25px"}}>Ambulance</p>
             </Button>
           </Card>
           <Card className={classes.card} style={{backgroundColor: '#3f51b5'}} >
           <Button id="police" style={{height: '100%'}}>
-              <SecurityIcon style={{color: 'white'}}/>
-              <p style={{color: 'white'}}> Police</p>
+              <SecurityIcon style={{color: 'white', position: 'relative', top: "-23px"}}/>
+              <br/>
+              <p style={{color: 'white', position: "relative", right:"25px"}}> Police</p>
             </Button>
           </Card>
           

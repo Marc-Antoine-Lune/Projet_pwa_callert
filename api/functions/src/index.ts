@@ -167,6 +167,16 @@ app.get('/articlesByView', async (req, res) => {
     }
 });
 
+//get particular article
+app.get('/article/:articleId', async (req, res) => {
+    const articleId = req.params.articleId; 
+    db.collection('articles').doc("article" + articleId).get()
+    .then(article => {
+        if(!article.exists) throw new Error('Article not found');
+        res.status(200).json({id:article.id, data:article.data()})})
+    .catch(error => res.status(500).send(error));
+});
+
 
 
 //define google cloud function name

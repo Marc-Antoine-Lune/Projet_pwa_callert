@@ -85,24 +85,21 @@ const NavDrawer = props =>{
   const [open, setOpen] = React.useState(false);
   const [firstName, setFirstName] = React.useState();
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   useEffect(() => {
-    var user = firebase.auth().currentUser;
-    if(!user){
-      setFirstName("Unknown");
-      return
-    }
-    var uid = user.uid;
-    firestore.collection('userProfiles').doc(uid).get().then((result)=>{
-      setFirstName(result.data().firstName);
-    })
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user)
+      if (user) {
+        var uid = user.uid;
+        console.log("uid" + uid)
+        firebase.firestore().collection('userProfiles').doc(uid).get().then((result)=>{
+          setFirstName(result.data().firstName);
+        })      } else {
+          setFirstName("Put your data");
+
+      }
+    });
   });
 
 
@@ -119,7 +116,8 @@ const NavDrawer = props =>{
         <Toolbar>
           <Grid item className={classes.iconButtonAvatar} >
               <IconButton color="inherit" >
-                <Avatar style={{ backgroundColor: '#F50357' }} alt="My Avatar" />
+                <Avatar style={{ backgroundColor: '#F50357', position: "relative", top: "-5px" }} alt="My Avatar" />
+
               </IconButton>
             </Grid>
             <Typography variant="h6" noWrap>

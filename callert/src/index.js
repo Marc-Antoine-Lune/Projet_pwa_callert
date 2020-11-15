@@ -5,7 +5,6 @@ import App from "./App";
 import './index.css';
 
 
-import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render( 
     <BrowserRouter>
@@ -18,7 +17,7 @@ ReactDOM.render(
 if(navigator.serviceWorker) {
     console.log('sw')
     navigator.serviceWorker
-        .register('./serviceWorker.js')
+        .register('serviceWorker.js')
         .catch(err => console.error('service worker NON enregistré', err));
 }
 

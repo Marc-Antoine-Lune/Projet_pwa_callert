@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import NavBar from './NavBar'
 import NavDrawer from './NavDrawer'
 import Loading from 'react-loading-spinkit';
+import { Redirect } from 'react-router-dom'
+
 
 
 const API = 'https://us-central1-callert-b38f5.cloudfunctions.net/webApi/api/v1/articles/';
@@ -29,8 +31,32 @@ class Blog extends Component {
       })
   }
 
+
+
+
+  toArticle(id){
+    this.props.history.push({
+      pathname: '/article',
+      articleId: id,
+    })
+  }
+
   render() {
-    const { articles } = this.state;
+
+    
+  if (this.state.articles.length == 0){
+    return (
+      <div style={{ height: '100vh', width: '100vw' }}>
+        <NavDrawer/>
+        <Loading
+          show={true}
+          name='circle'
+          color='#F50357'
+        />
+        <NavBar/>
+      </div>
+    );
+  }
 
     const divContainerStyle = {
       marginTop: 10,
@@ -69,9 +95,9 @@ class Blog extends Component {
         
         
         <ul style={{display: "flex", flexDirection: "column", justifyContent:"space-between", marginLeft: "-20px"}}>
-          {articles.map(article =>
+          {this.state.articles.map(article =>
           <li style={liStyle} >
-            <Card variant="outlined" style={{borderRadius: "10px", backgroundColor: "#3f51b5"}}>
+            <Card variant="outlined" style={{borderRadius: "10px", backgroundColor: "#3f51b5"}} onClick={() => this.toArticle(article.id)}>
             <CardContent>
               <Typography variant="h5" component="h2" style={{color: "white"}}>
                 {article.data.title}

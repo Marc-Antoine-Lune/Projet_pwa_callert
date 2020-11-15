@@ -7,7 +7,7 @@ import Home from './Components/Home'
 import Blog from './Components/Blog'
 import SignUp from './Components/SignUp'
 import MapPage from './Components/MapPage'
-
+import Article from './Components/Article'
 
 function App() {
 
@@ -20,6 +20,8 @@ function App() {
         <Route path="/blog" component={Blog} />
         <Route path="/signUp" component={SignUp} />
         <Route path="/map" component={MapPage} />
+        <Route path="/article" component={Article} />
+
 
         
 
