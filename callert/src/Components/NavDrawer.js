@@ -96,7 +96,7 @@ const NavDrawer = props =>{
         firebase.firestore().collection('userProfiles').doc(uid).get().then((result)=>{
           setFirstName(result.data().firstName);
         })      } else {
-          setFirstName("Put your data");
+          setFirstName("Enter your name");
 
       }
     });

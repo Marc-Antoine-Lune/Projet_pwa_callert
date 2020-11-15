@@ -103,8 +103,8 @@ app.delete('/users/:userId', (req, res) => {
 
 // Update user
 app.put('/users/:userId', async (req, res) => {
-    await db.collection('userProfiles').doc(req.params.userId).set(req.body,{merge:true})
-    .then(()=> res.json({id:req.params.userId}))
+     db.collection('userProfiles').doc(req.params.userId).set(req.body,{merge:true})
+    .then(()=> res.status(204).send("Document successfully modified!"))
     .catch((error)=> res.status(500).send(error))
 
 });

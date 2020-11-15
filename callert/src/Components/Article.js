@@ -32,7 +32,20 @@ class Article extends Component {
   }
 
   render() {
-
+    if (Object.keys(this.state.article).length == 0) {
+     console.log('loading...')
+     return (
+       <div style={{ height: '100vh', width: '100vw' }}>
+         <NavDrawer/>
+         <Loading
+           show={true}
+           name='circle'
+           color='#F50357'
+         />
+         <NavBar/>
+       </div>
+     );
+   }
 
     return (
       <div>

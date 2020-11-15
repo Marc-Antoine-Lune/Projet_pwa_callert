@@ -103,30 +103,30 @@ export default function Home() {
       }, 1000);
   }, false);
 
-  button.addEventListener("touchend", (e) => {
-    e.preventDefault();
-    console.log("unpressed button")
-    timer = 0;
-    clearInterval(timerInterval);
+    button.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      console.log("unpressed button")
+      timer = 0;
+      clearInterval(timerInterval);
 
-    document.querySelector('#item').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset 5px 5px 5px #f38383"
-  }, false);
+      document.querySelector('#item').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset 5px 5px 5px #f38383"
+    }, false);
 
-  button.addEventListener("touchcancel", (e) => {
-    e.preventDefault();
-    console.log("unpressed cancel")
-    clearInterval(timerInterval);
-    timer = 0;
-    document.querySelector('#item').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset 5px 5px 5px #f38383"
-  }, false);
+    button.addEventListener("touchcancel", (e) => {
+      e.preventDefault();
+      console.log("unpressed cancel")
+      clearInterval(timerInterval);
+      timer = 0;
+      document.querySelector('#item').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset 5px 5px 5px #f38383"
+    }, false);
 
-  button.addEventListener("touchleave", (e) => {
-    e.preventDefault();
-    console.log("unpressed leave")
-    clearInterval(timerInterval);
-    timer = 0;
-    document.querySelector('#item').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset 5px 5px 5px #f38383"
-  }, false);
+    button.addEventListener("touchleave", (e) => {
+      e.preventDefault();
+      console.log("unpressed leave")
+      clearInterval(timerInterval);
+      timer = 0;
+      document.querySelector('#item').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset 5px 5px 5px #f38383"
+    }, false);
 
 
 
@@ -156,41 +156,7 @@ pompier.addEventListener("mouseup", (e) => {
 }, false);
       
 
-      pompier.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        console.log("pressed")
-        timerInterval = setInterval(() => {
-          timer = timer + 60;
-          document.querySelector('#pompier').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px red"
-          if(timer>170){
-            timer = 0;
-            window.alert("calling");
-            clearInterval(timerInterval);
-            document.querySelector('#pompier').style.boxShadow = "none";
-            document.querySelector('#pompier').style.boxShadow = "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)";
-          } 
-        }, 1000);
-    }, false);
-    
-    pompier.addEventListener("touchend", (e) => {
-      console.log("unpressed")
-      clearInterval(timerInterval);
-      timer = 0;
-      document.querySelector('#pompier').style.boxShadow = "none";
-      document.querySelector('#pompier').style.boxShadow = "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)";
-    
-    }, false);
-          
-
-          pompier.addEventListener("touchleave", (e) => {
-            console.log("pressed")
-            timerInterval = setInterval(() => {
-              timer = timer + 60;
-              clearInterval(timerInterval);
-              document.querySelector('#pompier').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px #f38383"
-              if(timer>170) window.alert("you're calling 18")
-            }, 1000);
-        }, false);
+   
         
 
               })

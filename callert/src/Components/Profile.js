@@ -21,7 +21,8 @@ class Profile extends Component {
       contactNumber: null,
       adress: null,
       zipCode: null,
-      id: null
+      id: null,
+      saveStatus: false
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -64,20 +65,13 @@ class Profile extends Component {
         this.state
       ),
       headers: {
-        "Content-type": "application/json; charset=UTF-8"
+        "Content-type": "application/json"
       }
     }).then(response => {
-       response.json()
-    }).then(result => {
-      this.setState({
-        name: result.name,
-        firstName: result.firstName,
-        email: result.email,
-        contactNumber: result.contactNumber,
-        adress: result.adress,
-        zipCode: result.zipCode,
-      });
-    });
+      if(response.status == 204) this.setState({
+        saveStatus: true
+      })
+    })
     e.preventDefault();
   }
 
@@ -193,6 +187,7 @@ class Profile extends Component {
         >
           Save
           </Button>
+          <h5 style={{color:"rgb(63, 81, 181)"}} >{this.state.saveStatus ? 'Profile saved' : ''}</h5>
       </form>
       <NavBar/>
       </div>
