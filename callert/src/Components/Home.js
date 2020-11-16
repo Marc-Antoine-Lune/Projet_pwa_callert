@@ -136,7 +136,7 @@ export default function Home() {
       document.querySelector('#pompier').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px red"
       if(timer>170){
         clearInterval(timerInterval);
-        window.alert("youre're calling 18")
+        window.alert("you're calling 18")
         timer = 0;    
         document.querySelector('#pompier').style.backgroundColor = "#3f51b5"
         document.querySelector('#pompier').style.boxShadow = "none"
@@ -164,7 +164,7 @@ export default function Home() {
       document.querySelector('#pompier').style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px red"
       if(timer>170){
         clearInterval(timerInterval);
-        window.alert("youre're calling 18")
+        window.alert("you're calling 18")
         timer = 0;    
         document.querySelector('#pompier').style.backgroundColor = "#3f51b5"
         document.querySelector('#pompier').style.boxShadow = "none"
@@ -191,7 +191,7 @@ export default function Home() {
       ambulance.style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px red"
       if(timer>170){
         clearInterval(timerInterval);
-        window.alert("youre're calling 15")
+        window.alert("you're calling 15")
         timer = 0;    
         ambulance.style.backgroundColor = "#3f51b5"
         ambulance.style.boxShadow = "none"
@@ -217,7 +217,7 @@ export default function Home() {
       ambulance.style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px red"
       if(timer>170){
         clearInterval(timerInterval);
-        window.alert("youre're calling 15")
+        window.alert("you're calling 15")
         timer = 0;    
         ambulance.style.backgroundColor = "#3f51b5"
         ambulance.style.boxShadow = "none"
@@ -243,7 +243,7 @@ export default function Home() {
       police.style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px red"
       if(timer>170){
         clearInterval(timerInterval);
-        window.alert("youre're calling 17")
+        window.alert("you're calling 17")
         timer = 0;    
         police.style.backgroundColor = "#3f51b5"
         police.style.boxShadow = "none"
@@ -269,7 +269,7 @@ export default function Home() {
       police.style.boxShadow = " -5px -5px 20px #fff, 5px 5px 20px #9b6772, inset -5px -5px 5px #fe9090, inset " + timer + "px 5px 5px red"
       if(timer>170){
         clearInterval(timerInterval);
-        window.alert("youre're calling 17")
+        window.alert("you're calling 17")
         timer = 0;    
         police.style.backgroundColor = "#3f51b5"
         police.style.boxShadow = "none"
